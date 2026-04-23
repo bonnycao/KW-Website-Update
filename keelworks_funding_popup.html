@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KeelWorks Donation Popup</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Raleway:wght@600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      padding: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(20,30,40,0.55);
+      font-family: "Lato", Arial, sans-serif;
+    }
+    .popup {
+      width: 420px;
+      max-width: 90vw;
+      background: #ffffff;
+      border-radius: 16px;
+      overflow: hidden;
+      position: relative;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+    }
+    .close {
+      position: absolute;
+      top: 10px;
+      right: 12px;
+      width: 30px;
+      height: 30px;
+      border: none;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.92);
+      cursor: pointer;
+      font-size: 18px;
+      line-height: 1;
+    }
+    .thumbnail {
+      display: block;
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      object-position: center;
+    }
+    .content {
+      padding: 20px;
+    }
+    .title {
+      margin: 0 0 12px 0;
+      font-family: "Raleway", Arial, sans-serif;
+      font-size: 18px;
+      font-weight: 600;
+      color: #212121;
+      line-height: 1.35;
+    }
+    .text {
+      margin: 0 0 12px 0;
+      font-family: "Lato", Arial, sans-serif;
+      font-size: 16px;
+      font-weight: 400;
+      color: #212121;
+      line-height: 1.5;
+    }
+    .actions {
+      padding: 10px 20px 20px;
+      text-align: center;
+    }
+    .primary {
+      display: block;
+      width: 100%;
+      padding: 14px 20px;
+      border-radius: 8px;
+      background: #00929c;
+      color: #ffffff;
+      text-decoration: none;
+      font-family: "Lato", Arial, sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 1.2;
+      transition: background 0.2s ease;
+    }
+    .primary:hover {
+      background: #0f7b7b;
+    }
+    .secondary {
+      margin-top: 12px;
+      padding: 0;
+      border: none;
+      background: transparent;
+      color: #825e8b;
+      font-family: "Lato", Arial, sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 1.2;
+      cursor: pointer;
+      transition: color 0.2s ease;
+    }
+    .secondary:hover {
+      color: #684571;
+    }
+      #gift-button {
+      position: fixed;
+      right: 0;
+      top: 300px;
+      background: #00929c;
+      color: #ffffff;
+      border: none;
+      padding: 12px 16px;
+      border-radius: 8px 0 0 8px;
+      font-family: "Lato", sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      display: none; /* hidden by default */
+      z-index: 9999;
+      transition: background 0.2s ease;
+    }
+
+    #gift-button:hover {
+      background: #0f7b7b;
+    }
+  </style>
+
+</head>
+<body>
+  <div class="popup" role="dialog" aria-modal="true" aria-labelledby="popup-title">
+    <button class="close" aria-label="Close" onclick="closePopup()"><strong>×<strong></button>
+    <img src="images/support.jpg" alt="People joining hands in support" class="thumbnail" />
+    <div class="content">
+      <h1 class="title" id="popup-title">Help navigate the journey to self-reliance.</h1>
+      <p class="text">KeelWorks provides the structural support—the keel—that helps individuals navigate their professional journey with dignity.</p>
+      <p class="text">Your support empowers students and career-seekers to gain the skills they need for a stable future.</p>
+    </div>
+    <div class="actions">
+      <a class="primary" href="https://www.every.org/keelworks-foundation?utm_campaign=donate-link&method=card%2Cbank%2Cpaypal%2Cpay%2Cvenmo%2Cgift%2Cstocks%2Cdaf#/donate/card" target="_blank" rel="noopener noreferrer">Complete My Gift ❤️</a>
+      <button class="secondary" onclick="closePopup()">Maybe later</button>
+    </div>
+  </div>
+
+  <script>
+    function closePopup() {
+      document.querySelector('.popup').style.display = 'none';
+      document.body.style.background = '#ffffff';
+    }
+  </script>
+  <script>
+  function closePopup() {
+    document.querySelector('.popup').style.display = 'none';
+    document.body.style.background = '#ffffff';
+
+    // show floating button
+    document.getElementById('gift-button').style.display = 'block';
+  }
+
+  function openPopup() {
+    document.querySelector('.popup').style.display = 'block';
+    document.body.style.background = 'rgba(20,30,40,0.55)';
+
+    // hide button when popup is open
+    document.getElementById('gift-button').style.display = 'none';
+  }
+</script>
+<button id="gift-button" onclick="openPopup()">
+  ❤️ My Gift
+</button>
+
+</body>
+</html>
