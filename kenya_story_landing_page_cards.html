@@ -1,0 +1,620 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>KeelWorks – Kenya Story</title>
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="icon" type="image/png" href="images/favicon-16x16.png">
+</head>
+<style>
+body {margin:0;font-family: "Lato", Arial, sans-serif;background:#fff;color:#212121;}
+.header {position:fixed;top:0;width:100%;height:80px;background:#000;display:flex;align-items:center;padding:0 40px;z-index:1000;}
+.logo img {height:50px;}
+
+/* HERO */
+.hero {
+  height: 600px;
+  background: url("images/hero_banner1.jpg") center 20%/cover no-repeat;
+  position: relative;
+
+  /* 👇 THIS replaces your body padding hack */
+  display: flex;
+  align-items: center;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(0, 146, 156, 0.85),
+    rgba(130, 94, 139, 0.75),
+    rgba(0, 0, 0, 0.4)
+  );
+  display: flex;
+  align-items: center;
+}
+
+.hero-content {
+  color: white;
+  max-width: 800px;
+  padding-left: 120px;
+}
+
+.hero h1 {
+  font-family: "Raleway", Arial, sans-serif;
+  font-size: clamp(28px, 4vw, 38px);
+  text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+}
+
+/* ONLY prevent wrapping on large screens */
+@media (min-width: 1024px) {
+  .hero h1 {
+    white-space: nowrap;
+  }
+}
+
+.hero p {
+  font-family: "Lato", Arial, sans-serif;
+  font-size: 28px;
+  margin-bottom: 20px;
+  line-height: 36px;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+  color: #ffffff;
+}
+
+.donate-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+
+  background: #8b5fa8;
+  padding: 14px 26px;
+  border-radius: 8px;
+}
+
+.btn-icon {
+  width: 20px;
+  height: 20px;
+}
+.section {padding:80px 0;}
+.container,.wide {max-width:1100px;margin:0 auto;padding:0 20px;}
+.two-col {display:flex;gap:60px;align-items:flex-start;}
+.col {flex:1;}
+.col img {width:100%;border-radius:10px;}
+h2 {font-family: "Raleway", Arial, sans-serif;font-size:24px;color:#1f2937;margin-bottom:12px;}
+.subtitle {color:#6b7280;margin-bottom:20px;font-weight:bold}
+p {color:#374151;line-height:1.7;}
+.section.gray {background:#ebebeb;}
+.section.purple {background:#D0BCD5;}
+.btn {display:inline-block;background:#825e8b;color:white;padding:12px 22px;border-radius:6px;text-decoration:none;margin-top:20px;}
+.involved-grid {display:grid;grid-template-columns:repeat(3,1fr);gap:60px;margin-top:60px;text-align:center;}
+.involved-item img {width:150px;height:150px;border-radius:50%;object-fit:cover;margin:0 auto 20px;border:4px solid #fff;box-shadow:0 6px 18px rgba(0,0,0,0.12);}
+.involved-item a {color:#00929c;font-weight:600;text-decoration:none;}
+.involved-item a:hover {color:#077a85;}
+.footer {background:#000000;color:white;text-align:center;padding:40px 20px;}
+.footer a {color:white;margin:0 10px;text-decoration:none;}
+#topBtn {position:fixed;bottom:30px;right:30px;background:#00929c;color:white;border:none;padding:12px 16px;border-radius:50%;cursor:pointer;display:none;}
+#topBtn:hover {background:#077a85;}
+.arrow {
+  display: inline-block;
+  margin-left: 2px;
+  transition: transform 0.25s ease;
+}
+a:hover .arrow,
+.btn:hover .arrow {
+  transform: translateX(5px);
+}
+@media(max-width:768px){.two-col{flex-direction:column;}.involved-grid{grid-template-columns:1fr;}}
+
+.social-icons {
+  margin-bottom: 20px;
+}
+
+/* CIRCLE STYLE */
+.social-icons a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 40px;
+  height: 40px;
+  margin: 0 12px;
+
+  border: 2px solid rgba(255,255,255,0.7);
+  border-radius: 50%;
+
+  color: white;
+  font-size: 20px;
+
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+/* HOVER EFFECT */
+.social-icons a:hover {
+  border-color: #00929c;
+  color: #00929c;
+  transform: translateY(-3px);
+}
+
+
+
+.hero {height:600px;background:url("images/hero_banner1.jpg") center/cover no-repeat;display:flex;align-items:center;}
+.hero-overlay {position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,146,156,0.85),rgba(130,94,139,0.75));display:flex;align-items:center;}
+.hero-content {color:white;max-width:800px;padding-left:120px;}
+.hero h1 {font-size:36px;}
+.hero p {font-size:24px;}
+
+/*.section {padding:100px 0;}*/
+.container,.wide {max-width:1100px;margin:0 auto;padding:0 20px;}
+.two-col {display:flex;gap:60px;}
+.col {flex:1;}
+
+.story-grid {display:grid;grid-template-columns:repeat(4,1fr);gap:30px;margin-top:40px;}
+.story-card {background:white;border-radius:10px;overflow:hidden;box-shadow:0 6px 18px rgba(0,0,0,0.1);}
+.story-card img {width:100%;height:180px;object-fit:cover;}
+.story-card h3 {margin:15px;}
+.story-card p {margin:0 15px 10px;font-size:14px;}
+.story-card a {margin:0 15px 20px;display:inline-block;color:#00929c;}
+
+.modal {display:none;position:fixed;z-index:2000;left:0;top:0;width:100%;height:100%;background:rgba(0,0,0,0.6);}
+.modal-content {background:white;margin:10% auto;padding:30px;width:70%;border-radius:10px; overflow-y: auto; }
+
+
+.close {
+  float: right;
+  font-size: 24px;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  line-height: 1;
+  font-weight: bold;
+  /* NEW */
+  background: #666;
+  color: white;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: background 0.25s ease;
+}
+/* HOVER EFFECT */
+.close:hover {
+  background: #000;
+}
+@media (max-width: 1024px) {
+  .story-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .story-grid {
+    grid-template-columns: 1fr;
+  }
+}
+.story-card a {
+  margin: 0 15px 20px;
+  display: inline-block;
+  color: #00929c;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+/* STORY MODAL LAYOUT */
+.story-modal {
+  max-width: 900px;
+  width: 90%;
+  max-height: 70vh;
+  overflow-y: auto;
+  padding: 30px;
+}
+
+.story-modal::after {
+  content: "";
+  position: sticky;
+  bottom: 0;
+  display: block;
+  height: 30px;
+  background: linear-gradient(transparent, white);
+}
+
+/* IMAGE + TEXT SIDE BY SIDE */
+.story-top {
+  display: flex;
+  gap: 20px;
+  margin: 20px 0;
+}
+
+/* IMAGE */
+.story-top img {
+  width: 45%;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+/* RIGHT TEXT */
+.story-side-text {
+  width: 55%;
+}
+
+.story-side-text p {
+  margin-bottom: 12px;
+}
+
+/* MOBILE RESPONSIVE */
+@media (max-width: 768px) {
+  .story-top {
+    flex-direction: column;
+  }
+
+  .story-top img,
+  .story-side-text {
+    width: 100%;
+  }
+}
+.modal-footer {
+  margin-top: 30px;
+  text-align: right;
+}
+
+.secondary-btn {
+  background: #ffffff;
+  color: #007C88;
+  border: 1px solid #007C88;
+  padding: 10px 18px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight:bold;
+}
+
+.secondary-btn:hover {
+  background: #ffffff;
+  color: #00545C;
+  border: 1px solid #00545C;
+  font-weight:bold;
+}
+</style>
+
+<script>
+window.onscroll=function(){
+document.getElementById("topBtn").style.display=window.scrollY>300?"block":"none";
+};
+function scrollToTop(){window.scrollTo({top:0,behavior:'smooth'});}
+</script>
+
+<script>
+let scrollPosition = 0;
+
+function openModal(id){
+  scrollPosition = window.scrollY;
+
+  document.getElementById(id).style.display = "block";
+
+  document.body.style.position = "fixed";
+  document.body.style.top = `-${scrollPosition}px`;
+  document.body.style.width = "100%";
+}
+
+function closeModal(id){
+  document.getElementById(id).style.display = "none";
+
+  document.body.style.position = "";
+  document.body.style.top = "";
+  document.body.style.width = "";
+
+  window.scrollTo(0, scrollPosition);
+}
+</script>
+
+</head>
+
+<body>
+
+<div class="header"><div class="logo"><a href="https://www.keelworks.org/" target="_blank"><img src="images/KeelWorks-logo.png"></a></div></div>
+
+<section class="hero">
+<div class="hero-overlay">
+<div class="hero-content">
+<h1>Empowering Futures Through KeelMaster</h1>
+<p>Equipping young adults with skills, tools, and opportunities to rebuild their lives.</p>
+<a href="https://www.every.org/keelworks-foundation?utm_campaign=donate-link&method=card%2Cbank%2Cpaypal%2Cpay%2Cvenmo%2Cgift%2Cstocks%2Cdaf#/donate/card" target="_blank"class="btn donate-btn">
+  <img src="images/hand_donate_white.png" class="btn-icon">
+  Donate Now <span class="arrow">→</span>
+</a>
+</div></div></section>
+
+<section class="section" >
+<div class="container two-col">
+<div class="col"><img src="images/kenya_camp.png"></div>
+<div class="col">
+<h2>Where Opportunity Begins Again</h2>
+<p class="subtitle">A story from Kakuma refugee camp</p>
+<p>In Kakuma, thousands of young adults wake each day with determination to rebuild their lives. Many once had careers, education, and dreams that were disrupted overnight.</p>
+<p>KeelWorks stepped in with a simple but powerful idea — give people the tools to start again.</p>
+<p>Inside a modest classroom, students gather around shared laptops, learning new skills, supporting each other, and rebuilding confidence step by step.</p>
+<!--<p>This is more than training. It is a second chance.</p>-->
+</div></div></section>
+
+<!-- NEW STORY SECTION -->
+<section class="section gray">
+<div class="wide">
+
+<div class="col">
+<h2>Real Stories, Real Impact</h2>
+<p>Each journey begins with loss—but continues with courage. Meet the individuals in Kakuma who are turning opportunity into action, rebuilding their futures through learning, resilience, and determination.</p>
+</div>
+<div class="story-grid">
+
+<div class="story-card">
+<img src="images/thumbnail_ewill.jpg" alt="Story1-Ewill">
+<h3>Ewill Rabi</h3>
+<p>From Sudan to Kakuma, Ewill built a new path through digital skills...</p>
+<a href="#" onclick="event.preventDefault(); openModal('m1');">Learn More<span class="arrow">→</span></a>
+</div>
+
+<div class="story-card">
+<img src="images/thumbnail_leonce.jpg" alt="Story2-Leonce">
+<h3>Leonce Mucho</h3>
+<p>After years of struggle, Leonce found hope through training...</p>
+<a href="#" onclick="openModal('m2')">Learn More <span class="arrow">→</span></a>
+</div>
+
+<div class="story-card">
+<img src="images/thumbnail_samaidi.jpg" alt="Story3-Samaidi">
+<h3>Samaidi Fiston</h3>
+<p>Displaced by conflict, Samaidi continues pursuing education...</p>
+<a href="#" onclick="openModal('m3')">Learn More <span class="arrow">→</span></a>
+</div>
+
+<div class="story-card">
+<img src="images/thumbnail_mohame.jpg" alt="Story4-Mohame">
+<h3>Sadik Mohamed</h3>
+<p>From fleeing conflict to rebuilding his futre through training...</p>
+<a href="#" onclick="openModal('m4')">Learn More <span class="arrow">→</span></a>
+</div>
+
+</div>
+</div>
+</section>
+
+<!-- MODALS -->
+<div id="m1" class="modal">
+  <div class="modal-content story-modal">
+    <span class="close" onclick="closeModal('m1')">&times;</span>
+    <h2>Ewill Rabi’s Story</h2>
+    <!-- TOP INTRO -->
+    <!-- IMAGE + SIDE TEXT -->
+    <div class="story-top">
+      <img src="images/thumbnail_ewill.jpg" alt="Ewill Rabi">
+      <div class="story-side-text">
+        <p>
+          My name is Ewill Rabi born in Karikaria, Sudan, where my earliest memories were filled with stories told under the shade of acacia trees. Conflict soon forced my family to flee, and I found refuge in Kakuma Refugee Camp in Kenya. Life in Kakuma was harsh, long queues for water, crowded shelters, and limited opportunities but I refused to let these circumstances define me.
+        </p>
+        <p>
+          At school, I discovered a small computer center run by volunteers. The first time I touched a keyboard, I felt a new world open before me. Though access was limited, I spent hours learning basic typing, exploring offline lessons, and asking endless questions. Digital literacy became my passion and hope.
+        </p>
+      </div>
+    </div>
+    <!-- FULL WIDTH TEXT -->
+    <p>
+      As I grew older, I began teaching younger children what I had learned, sharing knowledge with patience and determination. I realized that technology could empower my community, giving them skills to connect, learn, and grow despite displacement.
+    </p>
+    <p>
+      Driven by this vision, I set my sights on becoming a leader in program management, especially in digital literacy initiatives. I dream of designing programs that equip refugees with digital skills, helping them build better futures. From Karikaria to Kakuma, my journey is one of resilience, purpose, and the power of knowledge.
+    </p>
+    <p style="padding-bottom:8px">
+      My story shows that even in the hardest conditions, determination and access to knowledge can shape a powerful future.
+    </p>
+    <div class="modal-footer">
+  <button onclick="closeModal('m1')" class="secondary-btn">Close Story</button>
+</div>
+  </div>
+</div>
+<div id="m2" class="modal">
+  <div class="modal-content story-modal">
+    <span class="close" onclick="closeModal('m2')">&times;</span>
+    <h2>Leonce Mucho’s Story</h2>
+    <p>
+      My name is Leonce Mucho, I have stayed in Kakuma Refugee Camp for over 10 years to date, experiencing numerous challenges due to the environmental conditions, one of them being hot weather. And as a matter of fact in general life in kakuma is too hard. Actually I completed both primary school and high school in the camp. However, I never gave up on learning, even when it was difficult.
+    </p>
+    <!-- IMAGE + SIDE TEXT -->
+    <div class="story-top">
+      <img src="images/thumbnail_leonce.jpg" alt="Leonce Mucho">
+      <div class="story-side-text">
+        <p>
+          Life in Kakuma gave me many challenges. And truly I suffered from financial instability. When I was in high school I struggled a lot in ensuring I stabilize my studies regardless of how hard it was even to get revision materials.
+        </p>
+        <p>
+          Second, I had no access to digital tools, which could help me do more research during my studies. There was no laptop or internet for me to learn computer skills, and as we know many good jobs today need these skills, but I could not get them.
+        </p>
+        <p>
+          Third, after high school, I could not find a suitable job that could at least have me some stipends for my basic needs. I applied many times, but the institutions and companies always told me, I should have an experience. But how can I get experience if no one gives me a chance to work? I felt stuck and worried about my future.
+        </p>
+      </div>
+    </div>
+    <!-- FULL WIDTH CONTENT -->
+    <p>
+      This year, I joined the KeelMaster program through VDPA Community Base Organization after I heard that Keelworks helps young people who have no jobs and its main purpose is to journey with unemployed youth and help them break the barrier to sustainable work and growth.
+    </p>
+    <p>
+      The program also helps undergraduates and graduates who lack work experience. Keelworks gives us valuable employment coaching so that we can find real jobs.
+    </p>
+    <p>
+      Through Keelworks, my life was again filled with hope that I will no longer have a job and keep preparing my mind for further studies. Currently I'm still under keelMaster training which is done on a weekly bases, and gives me a chance to interact with others in the same program through discussions and sessions being equipped with problem solving skills, critical thinking skills, assertiveness and modes of studying.
+    </p>
+    <p>
+      The coaches at Keelworks made me now understand what companies want from workers and I'm no longer afraid to apply for jobs.
+    </p>
+    <p>
+      Indeed, Kakuma taught me to be strong and patient, the challenges were many, but they did not break me. Keelworks are giving me skills and hope. My dream is to get a sustainable job in technology. Then I will make a transformation to other youth in Kakuma who feel stuck like I did. I want to show them that with the right support, we can all grow and succeed.
+    </p>
+    <p>
+      I am grateful to Keelworks for seeing my potential and believing in me. My story is and will still be written, but now I hold the pen with confidence and hope, truly, kakuma tested me, but the hope ignited by keelworks will carry me to my future.
+    </p>
+    <div class="modal-footer">
+    <button onclick="closeModal('m2')" class="secondary-btn">Close Story</button>
+    </div>
+  </div>
+</div>
+<div id="m3" class="modal">
+  <div class="modal-content story-modal">
+    <span class="close" onclick="closeModal('m3')">&times;</span>
+  <h2>Samaidi Fiston Bin Chris's Story</h2>
+  <p>
+    My name is Samaidi Fiston Binchris. I was born in the Democratic Republic of Congo, in Uvira, South Kivu Province—an area rich in natural resources but deeply affected by conflict and instability.
+  </p>
+  <p>
+    From an early age, life was marked by hardship. Growing up in a conflict-affected environment meant living in constant uncertainty and fear. Access to basic needs, especially education, was limited. Many children, including myself, struggled to maintain consistent schooling, and as a result, many dreams were interrupted before they could fully develop.
+  </p>
+  <!-- IMAGE + SIDE TEXT -->
+  <div class="story-top">
+    <img src="images/thumbnail_samaidi.jpg" alt="Samaidi Fiston Bin">
+    <div class="story-side-text">
+      <p>
+        Despite these challenges, I developed a strong passion for learning during my secondary education. I was particularly interested in Monitoring and Evaluation, a field that focuses on assessing impact, improving programs, and creating meaningful change in communities. My dream was to one day attend university and specialize in this field, so that I could contribute to development work and help improve the lives of others.
+      </p>
+      <p>
+        In addition to my academic ambitions, I also aspired to become an entrepreneur. I envisioned building my own production company, an initiative that could create opportunities, provide employment, and contribute to economic growth within my community.
+      </p>
+    </div>
+  </div>
+  <!-- FULL WIDTH CONTENT -->
+  <p>However, these dreams have faced significant obstacles. Due to ongoing insecurity, I was forced to leave my country and became a refugee. Life in the refugee camp presents new and complex challenges. The environment is difficult, and opportunities are limited. One of the major barriers I face is language. As a French speaker, I often find myself at a disadvantage in systems that prioritize English. Accessing education requires either starting again from primary level or first completing English language training, which delays progress and adds another layer of difficulty.
+  </p>
+  <p>
+    These realities have made my goals seem distant and, at times, overwhelming. Nevertheless, I have not given up. I remain determined to overcome these barriers, improve my language skills, and continue pursuing my education. I believe that with the right support and opportunities, I can still achieve my dreams.
+  </p>
+  <p>
+    My journey is not only about personal success, but also about making a difference. I want to use my knowledge in Monitoring and Evaluation to support organizations, improve programs, and bring positive change to vulnerable communities. At the same time, I hope to one day realize my entrepreneurial vision and contribute to economic empowerment.
+  </p>
+  <p>
+    Although my path has been filled with challenges, I carry resilience, determination, and hope. I believe that my story is still being written, and that the future holds opportunities beyond the limitations I face today.
+  </p>
+  <p>
+    This is my story—a story of struggle, ambition, and the determination to rise above circumstances.
+  </p>
+  <p>
+    My Dreams and Vision: My biggest dream is to become a Monitoring and Evaluation (M&E) specialist. When I was in high school, we witnessed the theft of many projects carried out in our school to help people. I was shocked that many projects were not successful because there was no real evaluation. I want to be someone who uses statistics and evidence to ensure that every penny spent brings real change to communities in need. That is my main professional goal.
+  </p>
+  <p>
+    In addition, I have another dream on the entrepreneurial side. I want to start my own production company. My vision here is not just to make a profit, but to create jobs for my fellow youth and provide opportunities for others to rise economically. I believe that entrepreneurship is an important way to bring peace and sustainable development.
+  </p>
+  <p>
+    My ultimate goal is to see that my journey, despite all the obstacles of refugees and language, will come to be a help to others. I want to prove that where I came from or my current situation does not determine my destiny.
+</p>
+<div class="modal-footer">
+<button onclick="closeModal('m3')" class="secondary-btn">Close Story</button>
+</div>
+</div>
+</div>
+<div id="m4" class="modal">
+  <div class="modal-content story-modal">
+    <span class="close" onclick="closeModal('m4')">&times;</span>
+  <h2>Sadik Mohamed’s Story</h2>
+  <p>
+    My name is Sadik Mohamed, and I was born in Saraf Jamus Payam, a small Sudanese village. There, life was easy but difficult. For survival, we relied on farming and cattle. Conflict, however, interfered with our peace, safety, and education. I had to escape, traveling great distances on foot before arriving at the Kakuma Refugee Camp in Kenya.
+  </p>
+  <p>
+    Kakuma was a difficult place to live. Food was scarce, opportunities were few, and the future was uncertain. I enrolled in the camp's elementary and secondary schools as soon as I got there because I was determined to finish my education in spite of the difficulties. I worked as a teacher at Kalobeyei Morning Star Primary and Junior School for two years after graduating from high school. I also participated in various initiatives to gain counseling skills. Knowing that education and technology could lead to opportunities, I also enrolled in the Jesuit Worldwide Learning program (JWL) to study computer skills and learning facilitation.
+  </p>
+  <!-- IMAGE + SIDE TEXT -->
+  <div class="story-top">
+    <img src="images/thumbnail_mohame.jpg" alt="Sadik Mohamed">
+    <div class="story-side-text">
+      <p>
+        Life in Kakuma was not easy. There was limited food, few opportunities, and an uncertain future. When I arrived, I joined primary and secondary school within the camp, determined to continue my education despite the challenges. After completing high school, I joined Kalobeyei Morning Star primary  and Junior school as a teacher for two years also joined different initiatives to learn counseling skills, I also joined Jesuit world wide learning program (JWL) to study learning facilitator, and computer skills knowing that education and technology could open doors for me.
+      </p>
+      <p>
+        Life continued to be challenging despite these efforts, but I persisted in pursuing my goals. My life changed when I enrolled in the KeelMaster program. It changed my perspective by giving me knowledge, self-assurance, and useful skills. I found new opportunities and developed the bravery to follow my dreams thanks to this program.
+      </p>
+    </div>
+  </div>
+  <!-- FULL WIDTH CONTENT -->
+  <p>
+    I now see past my difficulties with optimism and resolve. I now believe in learning, growth, and resilience as a result of my journey. I'm dedicated to realizing my goals and encouraging people in my neighborhood to follow in my footsteps.Life continued to be challenging despite these efforts, but I persisted in pursuing my goals.
+  </p>
+  <p>
+    I now see past my difficulties with optimism and resolve. I now believe in learning, growth, and resilience as a result of my journey. I'm dedicated to realizing my goals and encouraging people in my neighborhood to follow in my footsteps.
+</p>
+<div class="modal-footer">
+<button onclick="closeModal('m4')" class="secondary-btn">Close Story</button>
+</div>
+</div>
+</div>
+
+
+<section class="section">
+<div class="container two-col">
+<div class="col">
+<h2>From Uncertainty to Opportunity</h2>
+<p class="subtitle">A KeelMaster student journey</p>
+<p>Before joining KeelMaster, many participants were navigating uncertainty — educated, capable, but without access to meaningful opportunities.</p>
+<p>Through the program, students rebuild confidence and gain skills that translate into real-world jobs.</p>
+<p>It restores dignity, unlocks potential, and creates pathways to sustainable livelihoods.</p>
+</div>
+<div class="col"><img src="images/thumbnail_student_jouney.jpg"></div>
+</div></section>
+
+<section class="section purple">
+<div class="wide">
+<h2>Your Support Makes a Difference</h2>
+<p>Students, job seekers, and individuals facing hardship are already working to start or rebuild their futures. Your support to our ongoing programs provides laptops, tools, training and opportunity — turning potential into real pathways forward.</p>
+<a href="https://www.every.org/keelworks-foundation?utm_campaign=donate-link&method=card%2Cbank%2Cpaypal%2Cpay%2Cvenmo%2Cgift%2Cstocks%2Cdaf#/donate/card" target="_blank" class="btn donate-btn">
+  <img src="images/hand_donate_white.png" class="btn-icon">
+  Donate Today <span class="arrow">→</span>
+</a>
+</div></section>
+
+<section class="section">
+<div class="wide">
+<h2>Get Involved</h2>
+<p>Together, we can expand access to opportunity.</p>
+
+<div class="involved-grid">
+<div class="involved-item">
+<img src="images/donate.jpg">
+<p>Support access to tools and training.</p>
+<a href="https://www.every.org/keelworks-foundation?utm_campaign=donate-link&method=card%2Cbank%2Cpaypal%2Cpay%2Cvenmo%2Cgift%2Cstocks%2Cdaf#/donate/card" target="_blank">Making a Donation <span class="arrow">→</span></a>
+</div>
+
+<div class="involved-item">
+<img src="images/volunteer.jpg">
+<p>Share your time and expertise.</p>
+<a href="https://keelworks.org/getinvolved" target="_blank">Become a Volunteer <span class="arrow">→</span></a>
+</div>
+
+<div class="involved-item">
+<img src="images/share.png">
+<p>Encourage others to support our mission.</p>
+<a href="https://keelworks.org/getinvolved" target="_blank">Share Our Mission <span class="arrow">→</span></a>
+</div>
+</div>
+
+</div></section>
+<footer class="footer">
+
+  <!-- SOCIAL ICONS -->
+  <div class="social-icons">
+  <a href="#"><i class="fab fa-linkedin-in"></i></a>
+  <a href="#"><i class="fab fa-youtube"></i></a>
+  <a href="#"><i class="fab fa-x-twitter"></i></a>
+  <a href="#"><i class="fab fa-facebook-f"></i></a>
+  <a href="#"><i class="fab fa-instagram"></i></a>
+</div>
+
+  <p style="font-size:12px;">
+    <span style="color:#ffffff">© 2026 KeelWorks. All rights reserved.</span>
+  </p>
+
+</footer>
+
+
+<button id="topBtn" onclick="scrollToTop()">↑</button>
+
+</body>
+</html>
